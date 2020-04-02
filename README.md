@@ -22,7 +22,7 @@ This codebase is a wrapper for running and deploying a fullstack application to 
 2. Visit the application on the following ports/URLs:
    - Client: http://localhost:3000
    - Server: http://localhost:5000
-   - Database: Port 27017
+   - Database: Port 5432
  
 ## Commands
 
