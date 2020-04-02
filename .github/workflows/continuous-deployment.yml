@@ -1,0 +1,46 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Run server and client tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Run server tests
+        run: (cd .scripts && bash local.sh test_server)
+
+      - name: Run client tests
+        run: (cd .scripts && bash local.sh test_client)
+
+  deploy:
+    name: Build + deploy server and client
+    runs-on: ubuntu-latest
+    needs: [test]
+
+    # Env variables get injected into bash scripts.
+    # `secrets.*` come from the GitHub repository settings.
+    env:
+      HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
+      HEROKU_AUTH_TOKEN: ${{ secrets.HEROKU_AUTH_TOKEN }}
+      HEROKU_SERVER_APP_NAME: ${{ secrets.HEROKU_SERVER_APP_NAME }}
+      HEROKU_CLIENT_APP_NAME: ${{ secrets.HEROKU_CLIENT_APP_NAME }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Login to Heroku
+        run: (cd .scripts && bash heroku.sh login_heroku)
+
+      - name: Deploy server
+        run: (cd .scripts && bash heroku.sh deploy_server)
+
+      - name: Deploy client
+        run: (cd .scripts && bash heroku.sh deploy_client)
