@@ -24,11 +24,13 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1 className="home__title">Home</h1>
-      <ul>
-        <strong>Posts:</strong>
-        {renderPosts()}
-      </ul>
+      <div>
+        <h1 className="home__title">Home</h1>
+        <ul>
+          <strong>Posts from GraphQL API:</strong>
+          {renderPosts()}
+        </ul>
+      </div>
     </div>
   );
 };
