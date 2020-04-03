@@ -10,7 +10,7 @@ jest.mock('@apollo/react-hooks', () => ({
     data: {
       getPosts: [
         { id: 1, message: 'Foo' },
-        { id: 1, message: 'Bar' },
+        { id: 2, message: 'Bar' },
       ],
     }
   }),
