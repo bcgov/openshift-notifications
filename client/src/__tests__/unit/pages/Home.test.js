@@ -14,6 +14,7 @@ jest.mock('@apollo/react-hooks', () => ({
       ],
     }
   }),
+  useMutation: () => [jest.fn()],
 }));
 
 describe('Home - unit', () => {
