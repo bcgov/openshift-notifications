@@ -9,3 +9,7 @@ export const getPostById = (_, { postId }, { models }) => {
 export const createPost = (_, { message }, { models }) => {
   return models.Post.create({ message });
 };
+
+export const deletePost = (_, { id }, { models }) => {
+  return models.Post.destroy({ where: { id: id } });
+};

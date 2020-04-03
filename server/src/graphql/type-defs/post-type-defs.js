@@ -8,6 +8,7 @@ export const postTypeDefs = gql`
 
   extend type Mutation {
     createPost(message: String!): Post!
+    deletePost(id: ID!): Int!
   }
   
   type Post {

@@ -1,4 +1,4 @@
-import { getPosts, getPostById, createPost } from './post-resolvers';
+import { getPosts, getPostById, createPost, deletePost } from './post-resolvers';
 
 export default {
   Query: {
@@ -7,5 +7,6 @@ export default {
   },
   Mutation: {
     createPost,
+    deletePost,
   },
 };
