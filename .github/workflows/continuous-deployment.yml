@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Login to Heroku
-        run: (cd .scripts && bash heroku.sh login_heroku)
+        run: (cd .scripts && bash heroku.sh heroku_login)
 
       - name: Deploy server
         run: (cd .scripts && bash heroku.sh deploy_server)
